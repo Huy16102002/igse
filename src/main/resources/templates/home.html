@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        .navbar-nav .nav-link {
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background: #004aad;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+        .hero-section {
+            height: 80vh;
+            background: linear-gradient(rgba(255,255,255,0.7),
+            rgba(255,255,255,0.7)),
+            url('https://images.unsplash.com/photo-1503387762-592deb58ef4e')
+            center/cover no-repeat;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+        }
+
+        .hero-section .btn {
+            background-color: #4f648c;
+            border: none;
+        }
+
+        .hero-section .btn:hover {
+            background-color: #3d5074;
+        }
+        .social-group {
+            gap: 6px; /* chỉnh khoảng cách nhỏ */
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            transition: 0.3s ease;
+        }
+
+        .linkedin {
+            background-color: #0a66c2;
+        }
+
+        .email {
+            background-color: #6c757d;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.85;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+
+<!-- GỌI HEADER -->
+<div th:replace="fragments/header :: header"></div>
+
+<!-- HERO SECTION -->
+<section class="hero-section d-flex align-items-center text-center text-dark">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">
+            IGSE Investment and Capital Holdings
+        </h1>
+        <a href="#" class="btn btn-primary btn-lg px-4">
+            Tìm hiểu
+        </a>
+    </div>
+</section>
+
+<!-- DỊCH VỤ CHÍNH -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-5">Dịch vụ chính</h2>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4 h-100">
+                    <h5 class="fw-bold">Tư vấn đầu tư</h5>
+                    <p>Giải pháp đầu tư tối ưu và hiệu quả cho doanh nghiệp.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4 h-100">
+                    <h5 class="fw-bold">Quản lý tài chính</h5>
+                    <p>Chiến lược quản lý vốn và tài sản bền vững.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4 h-100">
+                    <h5 class="fw-bold">Phát triển dự án</h5>
+                    <p>Đồng hành xây dựng và phát triển dự án dài hạn.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="py-5">
+    <div class="container">
+
+        <!-- Title -->
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Về chúng tôi</h2>
+        </div>
+
+        <!-- Nội dung trên -->
+        <div class="row align-items-center mb-5">
+            <!-- Text -->
+            <div class="col-md-6">
+                <p class="fs-5 text-secondary">
+                    Thành lập vào năm 2018, Regulus Family Office đã trở thành nền tảng chiến lược
+                    cho các đại gia đình có thu nhập cao, kết hợp với quy hoạch có tầm nhìn xa,
+                    bối cảnh tài chính và thực thi chuyên nghiệp.
+                </p>
+                <p class="fs-5 text-secondary">
+                    Chúng tôi là nơi ươm mầm cho các doanh nghiệp Startup và SMEs,
+                    hướng dẫn họ đến thành công với các đầu vào chiến lược được cá nhân hóa
+                    và cái nhìn sâu sắc về ngành.
+                </p>
+            </div>
+
+            <!-- Logo -->
+            <div class="col-md-6 text-center">
+                <img src="https://via.placeholder.com/400x200?text=REGULUS+LOGO"
+                     class="img-fluid"
+                     alt="Logo">
+            </div>
+        </div>
+
+        <!-- 2 dịch vụ dưới -->
+        <div class="row g-5">
+
+            <!-- Quản lý tài sản -->
+            <div class="col-md-6 d-flex">
+                <div class="me-4">
+                    <i class="bi bi-currency-dollar fs-1 text-primary"></i>
+                </div>
+                <div>
+                    <h4 class="fw-bold">Quản lý tài sản</h4>
+                    <p class="text-secondary">
+                        Phát triển các chiến lược để nuôi dưỡng sự phát triển theo thời gian,
+                        với sự chú ý cảnh giác đến các động lực thị trường toàn cầu
+                        nhằm bảo vệ và gia tăng tài sản của gia đình.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bất động sản -->
+            <div class="col-md-6 d-flex">
+                <div class="me-4">
+                    <i class="bi bi-building fs-1 text-primary"></i>
+                </div>
+                <div>
+                    <h4 class="fw-bold">Bất động sản</h4>
+                    <p class="text-secondary">
+                        Quản lý một danh mục đầu tư vững chắc, phát triển qua các thế hệ,
+                        tận dụng các tài sản hàng đầu phù hợp với giá trị
+                        và tầm nhìn của gia đình.
+                    </p>
+                </div>
+            </div>
+            <!-- HÀNG DƯỚI -->
+            <div class="row g-5 mt-3">
+
+                <!-- Từ thiện -->
+                <div class="col-md-6 d-flex">
+                    <div class="me-4">
+                        <i class="bi bi-heart fs-1 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold">Từ thiện</h4>
+                        <p class="text-secondary">
+                            Điều phối các nỗ lực từ thiện nhằm tạo ra tác động lâu dài,
+                            gieo trồng những hạt giống cho một tương lai tốt đẹp hơn
+                            cho cộng đồng và hơn thế nữa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Đề xuất kế hoạch -->
+                <div class="col-md-6 d-flex">
+                    <div class="me-4">
+                        <i class="bi bi-clipboard-check fs-1 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold">Đề xuất kế hoạch</h4>
+                        <p class="text-secondary">
+                            Lập kế hoạch tỉ mỉ cho sự chuyển giao vốn liếng và giá trị
+                            một cách trôi chảy qua các thế hệ,
+                            tạo dựng di sản vững chắc trước thử thách của thời gian.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CERTIFICATE SLIDER -->
+<section class="py-5 bg-light">
+    <div class="container">
+
+        <div id="certificateCarousel"
+             class="carousel slide"
+             data-bs-ride="carousel"
+             data-bs-interval="3000">
+
+            <div class="carousel-inner">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row justify-content-center">
+
+                        <div class="col-md-4 text-center">
+                            <img src="/images/cert1.png"
+                                 class="img-fluid shadow"
+                                 alt="Certificate 1">
+                        </div>
+
+                        <div class="col-md-4 text-center">
+                            <img src="/images/cert1.png"
+                                 class="img-fluid shadow"
+                                 alt="Certificate 2">
+                        </div>
+
+                        <div class="col-md-4 text-center">
+                            <img src="/images/cert1.png"
+                                 class="img-fluid shadow"
+                                 alt="Certificate 3">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Slide 2 (lặp lại để tạo hiệu ứng vòng) -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+
+                        <div class="col-md-4 text-center">
+                            <img src="/images/cert1.png"
+                                 class="img-fluid shadow">
+                        </div>
+
+                        <div class="col-md-4 text-center">
+                            <img src="/images/cert1.png"
+                                 class="img-fluid shadow">
+                        </div>
+
+                        <div class="col-md-4 text-center">
+                            <img src="/images/cert1.png"
+                                 class="img-fluid shadow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Giới thiệu nhân viên -->
+<section class="py-5 bg-light">
+    <div class="container">
+
+        <div class="row g-5">
+
+            <!-- Person -->
+            <div class="col-md-6">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <img src="/images/person.png" class="img-fluid shadow rounded">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold">Dr. David Nguyen</h3>
+                        <h5 class="text-muted mb-3">Chief Family Office</h5>
+
+                        <div class="d-flex social-group">
+                            <a href="#" class="social-btn linkedin">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-btn email">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Person -->
+            <div class="col-md-6">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <img src="/images/person.png" class="img-fluid shadow rounded">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold">Mr. Max Nguyen</h3>
+                        <h5 class="text-muted mb-3">Country Director for Vietnam</h5>
+
+                        <div class="d-flex social-group">
+                            <a href="#" class="social-btn linkedin">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-btn email">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Person -->
+            <div class="col-md-6">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <img src="/images/person.png" class="img-fluid shadow rounded">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold">Mr. Phi Long Phan</h3>
+                        <h5 class="text-muted mb-3">Chief Investment Officer</h5>
+
+                        <div class="d-flex social-group">
+                            <a href="#" class="social-btn linkedin">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-btn email">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Person -->
+            <div class="col-md-6">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <img src="/images/person.png" class="img-fluid shadow rounded">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold">Ms. Lisa Nguyen</h3>
+                        <h5 class="text-muted mb-3">Relationship Manager (HNWI)</h5>
+
+                        <div class="d-flex social-group">
+                            <a href="#" class="social-btn linkedin">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-btn email">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- liên hệ -->
+<section class="py-5 bg-light">
+    <div class="container">
+
+        <h2 class="mb-5 fw-bold contact-title">
+            Liên hệ để biết thêm
+        </h2>
+
+        <form>
+
+            <div class="row g-4">
+
+                <!-- Tên -->
+                <div class="col-md-6">
+                    <label class="form-label">Tên</label>
+                    <input type="text" class="form-control custom-input">
+                </div>
+
+                <!-- Họ -->
+                <div class="col-md-6">
+                    <label class="form-label">Họ</label>
+                    <input type="text" class="form-control custom-input">
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-6">
+                    <label class="form-label">Email <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control custom-input">
+                </div>
+
+                <!-- SĐT -->
+                <div class="col-md-6">
+                    <label class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-0 border-bottom rounded-0">VN</span>
+                        <input type="text" class="form-control custom-input">
+                    </div>
+                </div>
+
+                <!-- Doanh nghiệp -->
+                <div class="col-12">
+                    <label class="form-label">Tên doanh nghiệp <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control custom-input">
+                </div>
+
+            </div>
+
+            <!-- Submit -->
+            <div class="text-end mt-4">
+                <button type="submit" class="btn btn-danger px-4">
+                    Submit
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</section>
+<div th:replace="fragments/footer :: footer"></div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
